@@ -1,17 +1,25 @@
+# Virtual Environment
 .venv
-__pycache__
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment Variables
 .env
+.env.local
+.env.production
 
 # Manim generated files
 media/
 generated_scripts/
 *.py.tmp
 
-# Python
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
+# Python Distribution / Packaging
 *.so
 .Python
 build/
@@ -29,19 +37,42 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# OS
+# OS Files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # Logs
 *.log
+logs/
 
 # Temporary files
 temp_manim_script_*.py
+*.tmp
+*.temp
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
