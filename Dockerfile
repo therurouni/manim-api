@@ -1,6 +1,6 @@
-FROM engineervix/python-latex:3.11-slim-bookworm
+FROM python:3.11-slim-bullseye
 
-# Install system dependencies for Manim
+# Install system dependencies for Manim in one layer
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     build-essential \
@@ -10,16 +10,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgirepository1.0-dev \
     libffi-dev \
     dvisvgm \
+    texlive-latex-base \
+    texlive-fonts-recommended \
+    texlive-latex-extra \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copy requirements and install Python packages
+# Copy requirements first for better
 COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
+# Copy application code
 COPY . .
 
 EXPOSE 8000
