@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+google-generativeai
+python-dotenv
+manim
+supabase==2.0.2
